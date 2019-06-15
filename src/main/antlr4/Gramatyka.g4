@@ -3,6 +3,7 @@ grammar Gramatyka;
 statement : (ifs
     |fors
     |whiles
+    |prints
     |assignment)*;
 
 ifs : ifBlock (elseIfBlock)* (elseBlock)? 'stop';
@@ -10,6 +11,8 @@ ifs : ifBlock (elseIfBlock)* (elseBlock)? 'stop';
 fors : 'dla 'Leftparenthesis integer Colon integer Rightparenthesis statement 'stop';
 
 whiles : 'dopoki' Leftcurly conditionalS Rightcurly statement'stop' ;
+
+prints : 'wypisz ' Til string;
 
 assignment : intVar '->' operation Semicolon
     | booleanVar '->' (conditionalS
@@ -34,9 +37,10 @@ operation : plus
     | integer
     | intVar ;
 
-intVar : 'cal '(Letter)+;
-booleanVar : 'log '(Letter)+;
+intVar : 'cal 'string;
+booleanVar : 'log 'string;
 integer: (Number)+;
+string: (Letter)+;
 
 plus : integer ' plus ' integer;
 minus : integer ' minus ' integer;
@@ -52,6 +56,7 @@ Leftbracket : '[';
 Rightbracket : ']';
 Leftcurly : '{';
 Rightcurly : '}';
+Til : '~';
 Colon : ':';
 Semicolon : ';';
 Zero : [0];

@@ -26,6 +26,11 @@ public class Visitor extends GramatykaBaseVisitor<String> {
                 visitWhiles(a);
             }
         }
+        if (ctx.prints() != null) {
+            for (GramatykaParser.PrintsContext a : ctx.prints()) {
+                visitPrints(a);
+            }
+        }
         return null;
     }
 
@@ -219,20 +224,16 @@ public class Visitor extends GramatykaBaseVisitor<String> {
 
     @Override
     public String visitIntVar(GramatykaParser.IntVarContext ctx) {
-        if (ctx.Letter()!=null && ctx.toString().substring(0,3).equals("cal ")) {
-            for (TerminalNode t : ctx.Letter()) {
-                program += t.getSymbol().getText();
-            }
+        if (ctx.string()!=null) {
+            program += "Integer "+ctx.string().getText();
         }
         return null;
     }
 
     @Override
     public String visitBooleanVar(GramatykaParser.BooleanVarContext ctx) {
-        if (ctx.Letter()!=null && ctx.toString().substring(0,3).equals("log ")) {
-            for (TerminalNode t : ctx.Letter()) {
-                program += t.getSymbol().getText();
-            }
+        if (ctx.string()!=null) {
+            program += "Boolean "+ctx.string().getText();
         }
         return null;
     }
@@ -291,4 +292,19 @@ public class Visitor extends GramatykaBaseVisitor<String> {
         throw new RuntimeException("Bad div operation");
     }
 
+
+    @Override
+    public String visitPrints(GramatykaParser.PrintsContext ctx) {
+        if(ctx.Til()!=null){
+            int len = ctx.string().Letter().size();
+            if(len>0){
+                program+="System.out.print(\"";
+                program+=(ctx.string().getText());
+                program+="\");";
+            }else {
+                program+="";
+            }
+        }
+        return null;
+    }
 }

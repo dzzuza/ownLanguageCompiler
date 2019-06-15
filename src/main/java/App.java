@@ -7,7 +7,13 @@ import java.io.PrintWriter;
 public class App {
     public static void main( String[] args )
     {
-        ANTLRInputStream inputStream = new ANTLRInputStream("jesli [3<5] dla (1:3) dopoki { 2 < 3 } stop stop stop");
+        ANTLRInputStream inputStream = new ANTLRInputStream("jesli [3<5]" +
+                "cal var->3;"+
+                " dla (1:3) " +
+                "wypisz ~for "+
+                "stop " +
+                "stop " +
+                "stop");
         GramatykaLexer markupLexer = new GramatykaLexer(inputStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(markupLexer);
         GramatykaParser markupParser = new GramatykaParser(commonTokenStream);
@@ -17,11 +23,15 @@ public class App {
         visitor.visit(bodyContext);
         PrintWriter printWriter = null;
         try {
-            printWriter = new PrintWriter("src\\main\\antlr4\\program.java");
+            printWriter = new PrintWriter("src\\main\\java\\Program.java");
         } catch (FileNotFoundException e) {
             System.out.println("nie moge utworzyc pliku");
         }
+        printWriter.print("public class Program {\n" +
+                "public static void main( String[] args )\n" +
+                "{");
         printWriter.print(Visitor.program);
+        printWriter.print("}}");
         printWriter.close();
     }
 }
