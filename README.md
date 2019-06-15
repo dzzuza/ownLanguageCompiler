@@ -7,7 +7,7 @@ Witamy w kompilatorze naszego własnego języka AZ.
 
 Aby skorzystać z narzędzia należy sklonować repozytorium.
 
-Program wymaga zainstalowania sdk java (min. wersja 8) oraz narzędzie maven. 
+Program wymaga zainstalowania sdk java (min. wersja 8). 
 Najłatwiej otworzyć projekt za pomocą narzędzia IntelliJ.
 
 Po ustawieniu środowiska można już korzystać z kompilatora. 
