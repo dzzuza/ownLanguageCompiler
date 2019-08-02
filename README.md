@@ -1,15 +1,11 @@
 # ownLanguageCompiler
 
 ############AZ###########
-##INSTRUKCJA OBSŁUGI##
 
-Witamy w kompilatorze naszego własnego języka AZ. 
+Welcome to our own language AZ compiler. 
 
-Aby skorzystać z narzędzia należy sklonować repozytorium.
+To use the tool you need to clone the repository.Tool requires installing sdk java (min. wersja 8).
+You can try a sample compilation of the program by running the App.java class. 
+The result code in java, will appear in the program.java file.
 
-Program wymaga zainstalowania sdk java (min. wersja 8). 
-Najłatwiej otworzyć projekt za pomocą narzędzia IntelliJ.
-
-Po ustawieniu środowiska można już korzystać z kompilatora. 
-Aby przełożyć kod języka AZ do Javy, należy wprowadzić go do aplikacji. Wynikowy kod w języku java pojawi się w pliku program.java.   
-Przykładową kompilację programu, można wykonać uruchamiając klasę App.java.
+Group project with Agnieszka Zadworny.
